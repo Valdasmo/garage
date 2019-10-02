@@ -45,7 +45,7 @@ class TruckController extends Controller
         $truck->mechanic_notices = $request->truck_mechanic_notices;
         $truck->mechanic_id = $request->mechanic_id;
         $truck->save();
-        return redirect()->route('truck.index');
+        return redirect()->route('truck.index')->with('success_message', 'Sekmingai įrašytas.');
     }
 
     /**
@@ -86,7 +86,7 @@ class TruckController extends Controller
         $truck->mechanic_notices = $request->truck_mechanic_notices;
         $truck->mechanic_id = $request->mechanic_id;
         $truck->save();
-        return redirect()->route('truck.index');
+        return redirect()->route('truck.index')->with('success_message', 'Sėkmingai pakeistas.');
         
     }
 
@@ -99,6 +99,6 @@ class TruckController extends Controller
     public function destroy(Truck $truck)
     {
         $truck->delete();
-        return redirect()->route('truck.index');
+        return redirect()->route('truck.index')->with('success_message', 'Sekmingai ištrintas.');
     }
 }
