@@ -11,10 +11,10 @@
                     <div class="form-group">
                         <form method="POST" action="{{route('mechanic.store')}}">
                             <label>Name:</label>
-                            <input type="text" class="form-control" name="mechanic_name">
+                            <input type="text" class="form-control" name="mechanic_name"value="{{old('mechanic_name')}}">
                             <small class="form-text text-muted">Įrašyti vardą</small>
                             <label>Surname:</label>
-                            <input type="text" class="form-control"name="mechanic_surname">
+                            <input type="text" class="form-control"name="mechanic_surname"value="{{old('mechanic_surname')}}">
                             <small class="form-text text-muted">Įrašyti pavardę</small>
                             @csrf
                             <button type="submit">ADD</button>
