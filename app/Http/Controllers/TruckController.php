@@ -6,6 +6,8 @@ use App\Truck;
 use Illuminate\Http\Request;
 use App\Mechanic;
 use Validator;
+use Intervention\Image\ImageManagerStatic as Image;
+
 
 class TruckController extends Controller
 {
@@ -54,11 +56,27 @@ class TruckController extends Controller
  
 
         $truck = new Truck;
+
+// foto start
+
+$file = $request->file('truck_photo');
+$img = Image::make($file);
+// resize the image to a width of 300 and constrain aspect ratio (auto height)
+$img->resize(300, null, function ($constraint) {
+    $constraint->aspectRatio();
+});
+$photo = basename($file->getClientOriginalName());// failo vardas
+$img->save(public_path('/img/'.$photo));
+
+// foto end ----- komandos is $img->resize kodo galo: ->pixelate(4)->rotate(-45) 
+//                 kurios papixelioja ir pasuka foto
+
         $truck->maker = $request->truck_maker;
         $truck->plate = $request->truck_plate;
         $truck->make_year = $request->truck_make_year;
         $truck->mechanic_notices = $request->truck_mechanic_notices;
         $truck->mechanic_id = $request->mechanic_id;
+        $truck->file = $photo; //foto
         $truck->save();
         return redirect()->route('truck.index')->with('success_message', 'Sekmingai įrašytas.');
     }

@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <div class="form-group">
-                        <form method="POST" action="{{route('truck.update',[$truck])}}">
+                        <form method="POST" action="{{route('truck.update',[$truck])}}" enctype="multipart/form-data">
                             <label>Maker: </label>
                             <input type="text" class="form-control" name="truck_maker" value="{{$truck->maker}}">
                             <small class="form-text text-muted">Pakeisti gamintoją</small>
@@ -24,6 +24,12 @@
                             <textarea name="truck_mechanic_notices" class="form-control"
                                 id="summernote">{{$truck->mechanic_notices}}</textarea>
                             <small class="form-text text-muted">Pakeisti užrašus</small>
+{{-- foto --}}
+                            <label>Nuotrauka</label>
+                            <input type="file" class="form-control" name="truck_photo">
+                            <small class="form-text text-muted">Kažkoks parašymas.</small>
+                            {{-- <img src="{{asset('/img/'.$truck->file)}}" style="width:150px;"> --}}
+{{-- foto --}}
                             <select name="mechanic_id">
                                 @foreach ($mechanics as $mechanic)
                                 <option value="{{$mechanic->id}}" @if($mechanic->id == $truck->mechanic_id) selected

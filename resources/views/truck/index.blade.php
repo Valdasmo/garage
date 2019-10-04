@@ -14,6 +14,7 @@
             <a href="{{route('truck.edit',[$truck])}}" class="form-control">{{$truck->maker}}
               {{$truck->truckMechanic->name}}
               {{$truck->truckMechanic->surname}}</a>
+              <img src="{{asset('/img/'.$truck->file)}}" style="width:150px;">  {{--foto--}}
             <form method="POST" action="{{route('truck.destroy', [$truck])}}">
               @csrf
               <button type="submit">DELETE</button>

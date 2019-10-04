@@ -9,22 +9,28 @@
 
                 <div class="card-body">
                     <div class="form-group">
-                        <form method="POST" action="{{route('truck.store')}}">
+                        <form method="POST" action="{{route('truck.store')}}" enctype="multipart/form-data"> {{--MALDA--}}
                             <label>Maker: </label>
-                            <input type="text" class="form-control" name="truck_maker"value="{{old('truck_maker')}}">
+                            <input type="text" class="form-control" name="truck_maker" value="{{old('truck_maker')}}">
                             <small class="form-text text-muted">Įrašyti gamintoją</small>
                             <br>
                             <label>Plate: </label>
-                            <input type="text" class="form-control" name="truck_plate"value="{{old('truck_plate')}}">
+                            <input type="text" class="form-control" name="truck_plate" value="{{old('truck_plate')}}">
                             <small class="form-text text-muted">Įrašyti numerį</small>
                             <br>
                             <label>Make_year:</label>
-                            <input type="text" class="form-control" name="truck_make_year"value="{{old('truck_make_year')}}">
+                            <input type="text" class="form-control" name="truck_make_year"
+                                value="{{old('truck_make_year')}}">
                             <small class="form-text text-muted">Įrašyti pagaminimo metus</small>
                             <br>
                             <label>Mechanic_notices:</label>
-                            <textarea name="truck_mechanic_notices" class="form-control"id="summernote"value="{{old('truck_mechanic_notices')}}"></textarea>
+                            <textarea name="truck_mechanic_notices" class="form-control" id="summernote"
+                                value="{{old('truck_mechanic_notices')}}"></textarea>
                             <small class="form-text text-muted">Įrašyti užrašus</small>
+                            <br>
+                            <label>Nuotrauka</label>
+                            <input type="file" class="form-control" name="truck_photo">
+                            <small class="form-text text-muted">Kažkoks parašymas.</small>
                             <select name="mechanic_id">
                                 @foreach ($mechanics as $mechanic)
                                 <option value="{{$mechanic->id}}">{{$mechanic->name}} {{$mechanic->surname}}</option>
@@ -43,5 +49,5 @@
     $(document).ready(function() {
        $('#summernote').summernote();
      });
-    </script>
+</script>
 @endsection
