@@ -7,6 +7,21 @@
       <div class="card">
         <div class="card-header">PAVADINIMAS</div>
 
+                    {{-- Filtravimas start --}}
+
+                    <form method="GET" action="{{route('truck.index')}}">
+                      <select class="form-control" name="filter">
+                          @foreach ($mechanics as $mechanic)
+                          <option value="{{$mechanic->id}}" @if($mechanic->id==$filter) selected @endif>{{$mechanic->name}}
+                              {{$mechanic->surname}}</option>
+                          @endforeach
+                      </select>
+
+                      <br>
+                      <button type="submit">Rodyti vairuotojo transportą</button>
+                  </form>
+                  {{-- Filtravimas end --}}
+
         <div class="card-body">
           <div class="form-group">
             @foreach ($trucks as $truck)

@@ -16,10 +16,23 @@ class TruckController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request) //kuku
     {
-        $trucks = Truck::all();
-        return view('truck.index', ['trucks' => $trucks]);
+        $filter = $request->get('filter', ''); //kuku
+        $mechanics = Mechanic::all(); //kuku
+//kuku
+        if ($filter) {
+            $trucks = Truck::where('mechanic_id', $filter)->get(); // db
+
+        } else {
+            $trucks = Truck::all();
+        }
+//kuku
+        return view('truck.index', [
+            'trucks' => $trucks,
+            'mechanics' => $mechanics, //kuku
+            'filter' => $filter ?? 0 //kuku
+        ]);
     }
 
     /**

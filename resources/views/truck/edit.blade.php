@@ -24,12 +24,12 @@
                             <textarea name="truck_mechanic_notices" class="form-control"
                                 id="summernote">{{$truck->mechanic_notices}}</textarea>
                             <small class="form-text text-muted">Pakeisti užrašus</small>
-{{-- foto --}}
+                            {{-- foto --}}
                             <label>Nuotrauka</label>
                             <input type="file" class="form-control" name="truck_photo">
                             <small class="form-text text-muted">Mašinos nuotrauka.</small>
                             {{-- <img src="{{asset('/img/'.$truck->file)}}" style="width:150px;"> --}}
-{{-- foto --}}
+                            {{-- foto --}}
                             <select name="mechanic_id">
                                 @foreach ($mechanics as $mechanic)
                                 <option value="{{$mechanic->id}}" @if($mechanic->id == $truck->mechanic_id) selected

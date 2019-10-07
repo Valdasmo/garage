@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                     <div class="form-group">
-                        <form method="POST" action="{{route('truck.store')}}" enctype="multipart/form-data"> {{--MALDA--}}
+                        <form method="POST" action="{{route('truck.store')}}" enctype="multipart/form-data">{{--MALDA--}}
                             <label>Maker: </label>
                             <input type="text" class="form-control" name="truck_maker" value="{{old('truck_maker')}}">
                             <small class="form-text text-muted">Įrašyti gamintoją</small>

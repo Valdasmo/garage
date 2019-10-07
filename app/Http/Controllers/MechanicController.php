@@ -14,18 +14,14 @@ class MechanicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {        $sort = $request->get('sort', '');
-        if ($sort == 'a-z')
-        {
+    {
+        $sort = $request->get('sort', '');
+        if ($sort == 'a-z') {
             $mechanics = Mechanic::orderBy('name')->get();
-        }
-        else if ($sort == 'z-a')
-        {
+        } else if ($sort == 'z-a') {
             $mechanics = Mechanic::orderBy('name', 'desc')->get();
-        }
-
-         else {
-        $mechanics = Mechanic::all();
+        } else {
+            $mechanics = Mechanic::all();
         }
         return view('mechanic.index', ['mechanics' => $mechanics]);
     }
@@ -48,17 +44,18 @@ class MechanicController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'mechanic_name' => ['required', 'min:3', 'max:64'],
-            'mechanic_surname' => ['required', 'min:3', 'max:64'],
-        ]
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'mechanic_name' => ['required', 'min:3', 'max:64'],
+                'mechanic_surname' => ['required', 'min:3', 'max:64'],
+            ]
         );
         if ($validator->fails()) {
             $request->flash();
             return redirect()->route('mechanic.create')->withErrors($validator);
         }
-        
+
         $mechanic = new Mechanic;
         $mechanic->name = $request->mechanic_name;
         $mechanic->surname = $request->mechanic_surname;
@@ -97,11 +94,12 @@ class MechanicController extends Controller
      */
     public function update(Request $request, Mechanic $mechanic)
     {
-        $validator = Validator::make($request->all(),
-        [
-            'mechanic_name' => ['required', 'min:3', 'max:64'],
-            'mechanic_surname' => ['required', 'min:3', 'max:64'],
-        ]
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'mechanic_name' => ['required', 'min:3', 'max:64'],
+                'mechanic_surname' => ['required', 'min:3', 'max:64'],
+            ]
         );
         if ($validator->fails()) {
             $request->flash();
@@ -121,11 +119,10 @@ class MechanicController extends Controller
      */
     public function destroy(Mechanic $mechanic)
     {
-        if($mechanic->mechanicTrucks->count()){
+        if ($mechanic->mechanicTrucks->count()) {
             return redirect()->route('mechanic.index')->with('info_message', 'Trinti negalima, nes turi sunkvežimių');
         }
         $mechanic->delete();
         return redirect()->route('mechanic.index')->with('success_message', 'Sekmingai ištrintas.');
-
     }
 }
