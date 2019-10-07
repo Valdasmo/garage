@@ -27,7 +27,7 @@
 {{-- foto --}}
                             <label>Nuotrauka</label>
                             <input type="file" class="form-control" name="truck_photo">
-                            <small class="form-text text-muted">Kažkoks parašymas.</small>
+                            <small class="form-text text-muted">Mašinos nuotrauka.</small>
                             {{-- <img src="{{asset('/img/'.$truck->file)}}" style="width:150px;"> --}}
 {{-- foto --}}
                             <select name="mechanic_id">

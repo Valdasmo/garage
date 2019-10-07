@@ -30,7 +30,7 @@
                             <br>
                             <label>Nuotrauka</label>
                             <input type="file" class="form-control" name="truck_photo">
-                            <small class="form-text text-muted">Kažkoks parašymas.</small>
+                            <small class="form-text text-muted">Mašinos nuotrauka.</small>
                             <select name="mechanic_id">
                                 @foreach ($mechanics as $mechanic)
                                 <option value="{{$mechanic->id}}">{{$mechanic->name}} {{$mechanic->surname}}</option>
