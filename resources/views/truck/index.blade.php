@@ -5,7 +5,7 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">PAVADINIMAS</div>
+        <div class="card-header">PAVADINIMAS
 
                     {{-- Filtravimas start --}}
 
@@ -21,7 +21,7 @@
                       <button type="submit">Rodyti vairuotojo transportą</button>
                   </form>
                   {{-- Filtravimas end --}}
-
+                </div>
         <div class="card-body">
           <div class="form-group">
             @foreach ($trucks as $truck)
